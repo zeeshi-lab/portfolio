@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Contact</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="rowleft">
+                    <h2 class="title a">Contact form</h2>
+                    <p><i class="fa-solid fa-envelope"></i>iamzeeshanattarii@gmail.com</p>
+                    <p><i class="fa-solid fa-square-phone"></i>03446158849</p>
+                    <div class="social-icons">
+                    <a href="https://www.facebook.com/share/nBXxthiodxYoGzXU/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-twitter-square"></i></a>
+                    <a href="https://www.instagram.com/mad_zishi/profilecard/?igsh=MWJkbDBndXFidWJrZw==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                    <a href="CV.pdf" download class="btn btn1" target="_blank">Download CV</a>
+                </div>
+                <div class="rowright">
+                    <form action="#" name="submit-to-google-sheet">
+                        <input type="text" name="Name" placeholder="Your name" required>
+                        <input type="text" name="Email" placeholder="Your email" required>
+                        <textarea name="Massage" placeholder="Your massage" rows="6"></textarea>
+                        <button class="btn btn1">submit</button>
+                    </form>   
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+     </div>
+     <script src="java.js"></script>
+     <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyzWoDvdSn2xJFv0j29qItiVqizYyIMPyh5S7L5zWaGvj3dk5fqLaUUm6R7omYm88AIbg/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg=document.getElementById("msg")
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerText="submit successfully"
+               setTimeout(() => {
+                msg.innerText=""
+               }, 4000);
+                form.reset();
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
