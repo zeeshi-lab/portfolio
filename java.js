@@ -15,9 +15,9 @@ link.addEventListener("click",(event)=>{
     event.currentTarget.classList.add("active-link")
     let tabId = event.currentTarget.getAttribute("data");
 
-        let shempo = document.getElementById(tabId);
-        if (shempo) {
-            shempo.classList.add("active-content");
+        let dataBox = document.getElementById(tabId);
+        if (dataBox) {
+            dataBox.classList.add("active-content");
         }
 })
 })
